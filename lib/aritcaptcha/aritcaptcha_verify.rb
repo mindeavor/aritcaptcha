@@ -6,8 +6,7 @@ module Aritcaptcha
 
     def verify_aritcaptcha(params)
       if (equation_key = params[:equation_key]) and (equation = params[:equation])
-        if session[:equation] and session[:equation][SOLV_KEY] == equation_key.to_i and session[:equation][SOLV] == equation.to_i
-          clean session[:image] 
+        if session[:equation] and session[:equation][SOLV_KEY] == equation_key and session[:equation][SOLV] == equation.to_i
           return true
         end
       end          
