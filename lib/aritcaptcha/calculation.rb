@@ -6,8 +6,7 @@ module Aritcaptcha
       # Division by zero
       return [nil, nil] if operator == "/" and number1.zero? or number2.zero?
 
-      number1 = rand(number1)
-      number2 = rand(number2)
+      number1, number2 = [rand(number1), rand(number2)].sort.reverse
 
       equation = "#{number1} #{operator} #{number2}"
       result = eval("#{number1.to_f} #{operator} #{number2.to_f}")
