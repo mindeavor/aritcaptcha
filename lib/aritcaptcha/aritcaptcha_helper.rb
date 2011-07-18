@@ -16,6 +16,7 @@ module Aritcaptcha
       equation_key = gen_rand_name
 
       default_operations = {:add => "+", :sub => "-", :mul => "*", :div => "/"}
+      options[:max] ||= 50
 
       operator = nil
       if options[:operations] == nil
@@ -27,7 +28,7 @@ module Aritcaptcha
          end
          operator = non_default_operations.to_a[rand(non_default_operations.size)][1]
       end
-      equation, result = Aritcaptcha::Calculation.generate_calculation 50, 50, operator
+      equation, result = Aritcaptcha::Calculation.generate_calculation options[:max], options[:max], operator
 
       session[:equation] = [equation_key, eval(equation)]
 
